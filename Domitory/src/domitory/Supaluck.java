@@ -10,13 +10,7 @@ package domitory;
  *
  * @author Administrator
  */
-public class Domitory {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-    }
-    
+public class Supaluck {
+    String name ="Supaluck Jaimachuea";
+    String atuid = "55024534";
 }
