@@ -12,11 +12,9 @@ package domitory;
  */
 public class Domitory {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
-    }
+    public class Suchada {
+    String name = "suchada uppananchai";
+    String studentid = "55025928";
     
+    }   
 }
