@@ -4,13 +4,14 @@
  * and open the template in the editor.
  */
 
-package domitory;
+package domitory.aboutus;
 
 /**
  *
  * @author Administrator
  */
-public class Supaluck {
-    String name ="Supaluck Jaimachuea";
-    String atuid = "55024534";
+public class Khwanrudee {
+    String name = "Khwanrudee Krajomthong";
+    String stuid = "55021272";
+    
 }
