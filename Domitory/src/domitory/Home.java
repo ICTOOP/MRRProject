@@ -20,7 +20,14 @@ public class Home extends javax.swing.JFrame {
     /**
      * Creates new form Home
      */
-    EntityManagerFactory factory=Persistence.createEntityManagerFactory("DomitoryPU");
+    /*EntityManagerFactory factory =Persistence.createEntityManagerFactory("DomitoryPU");
+    RoomJpaController RoomController=new RoomJpaController(factory);
+    public Home()
+    {
+        initComponents();
+        this.bookingViews1.setName(null);
+    }*/
+    /*EntityManagerFactory factory=Persistence.createEntityManagerFactory("DomitoryPU");
     RoomJpaController roomController = new RoomJpaController((factory));
     
     public Home() {
@@ -28,7 +35,7 @@ public class Home extends javax.swing.JFrame {
         this.aboutUs1.setRoomController(roomController);
         this.aboutUs11.setRoomJpaController(roomController);
         
-    }
+    }*/
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -41,11 +48,13 @@ public class Home extends javax.swing.JFrame {
 
         aboutUs1 = new domitory.views.AboutUs();
         aboutUs11 = new domitory.views.AboutUs1();
+        bookingViews1 = new domitory.views.BookingViews();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
         jMenu6 = new javax.swing.JMenu();
@@ -54,8 +63,7 @@ public class Home extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.CardLayout());
-        getContentPane().add(aboutUs1, "A");
-        getContentPane().add(aboutUs11, "B");
+        getContentPane().add(bookingViews1, "cardBook");
 
         jMenu1.setText("Home");
         jMenu1.addActionListener(new java.awt.event.ActionListener() {
@@ -83,6 +91,20 @@ public class Home extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         jMenu3.setText("Book");
+        jMenu3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu3ActionPerformed(evt);
+            }
+        });
+
+        jMenuItem3.setText("Book");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem3);
+
         jMenuBar1.add(jMenu3);
 
         jMenu4.setText("Rent");
@@ -119,6 +141,17 @@ public class Home extends javax.swing.JFrame {
     private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
 
     }//GEN-LAST:event_jMenu1ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+        Container cardBook = this.getContentPane();
+        CardLayout layout = (CardLayout) cardBook.getLayout();
+        layout.show(cardBook, "cardBook");
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -158,6 +191,7 @@ public class Home extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private domitory.views.AboutUs aboutUs1;
     private domitory.views.AboutUs1 aboutUs11;
+    private domitory.views.BookingViews bookingViews1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
@@ -168,5 +202,6 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     // End of variables declaration//GEN-END:variables
 }

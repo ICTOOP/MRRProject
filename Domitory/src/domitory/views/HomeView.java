@@ -6,32 +6,16 @@
 
 package domitory.views;
 
-import domitory.RoomJpaController;
-import domitory.entites.Room;
-import sun.security.x509.AVA;
-
 /**
  *
- * @author Administrator
+ * @author Na Standa
  */
-public class AboutUs extends javax.swing.JPanel {
+public class HomeView extends javax.swing.JPanel {
 
-    private RoomJpaController roomController;
-
-    public RoomJpaController getRoomController() {
-        return roomController;
-    }
-
-    public void setRoomController(RoomJpaController roomController) {
-        this.roomController = roomController;
-    }
-    
-    
-    
     /**
-     * Creates new form AboutUs
+     * Creates new form HomeView
      */
-    public AboutUs() {
+    public HomeView() {
         initComponents();
     }
 

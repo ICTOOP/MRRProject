@@ -17,7 +17,8 @@ public class Domitory {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Home home=new Home();
+        //JFrame f=new JFrame();
+        Home2 home=new Home2();
         home.setVisible(true);
     }
     
