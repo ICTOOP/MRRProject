@@ -44,12 +44,10 @@ public class Home2 extends javax.swing.JFrame {
         bookingViews1 = new domitory.views.BookingViews();
         bookingViews2 = new domitory.views.BookingViews();
         bookingViews3 = new domitory.views.BookingViews();
+        homeView5 = new domitory.views.HomeView();
         tenantViews5 = new domitory.views.TenantViews();
         otherView4 = new domitory.views.OtherView();
-        homeView4 = new domitory.views.HomeView();
-        bookingViews4 = new domitory.views.BookingViews();
         roomView1 = new domitory.views.RoomView();
-        homeView5 = new domitory.views.HomeView();
         bookingViews5 = new domitory.views.BookingViews();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -89,14 +87,6 @@ public class Home2 extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.CardLayout());
-        getContentPane().add(tenantViews5, "cardt");
-        getContentPane().add(otherView4, "cardo");
-
-        homeView4.setLayout(new java.awt.CardLayout());
-        homeView4.add(bookingViews4, "cardb");
-
-        getContentPane().add(homeView4, "cardh");
-        getContentPane().add(roomView1, "cardr");
 
         javax.swing.GroupLayout homeView5Layout = new javax.swing.GroupLayout(homeView5);
         homeView5.setLayout(homeView5Layout);
@@ -110,6 +100,9 @@ public class Home2 extends javax.swing.JFrame {
         );
 
         getContentPane().add(homeView5, "cardhome");
+        getContentPane().add(tenantViews5, "cardt");
+        getContentPane().add(otherView4, "cardo");
+        getContentPane().add(roomView1, "cardr");
         getContentPane().add(bookingViews5, "cardb");
 
         jMenu1.setText("File");
@@ -251,12 +244,10 @@ public class Home2 extends javax.swing.JFrame {
     private domitory.views.BookingViews bookingViews1;
     private domitory.views.BookingViews bookingViews2;
     private domitory.views.BookingViews bookingViews3;
-    private domitory.views.BookingViews bookingViews4;
     private domitory.views.BookingViews bookingViews5;
     private domitory.views.HomeView homeView1;
     private domitory.views.HomeView homeView2;
     private domitory.views.HomeView homeView3;
-    private domitory.views.HomeView homeView4;
     private domitory.views.HomeView homeView5;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
