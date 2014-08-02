@@ -3,8 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package domitory.views;
+
+import domitory.Home2;
+import domitory.controllers.RoomJpaController;
+import domitory.entites.Room;
+import java.awt.Component;
+import java.util.List;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import javax.swing.table.AbstractTableModel;
 
 /**
  *
@@ -15,8 +25,37 @@ public class RoomView extends javax.swing.JPanel {
     /**
      * Creates new form RoomView
      */
+    RoomJpaController roomJpaController;
+    EntityManagerFactory emf;
+    RoomTableModel roomTableModel;
+    Home2 parent;
     public RoomView() {
         initComponents();
+
+    }
+
+    public RoomView(EntityManagerFactory emf) {
+        initComponents();
+        emf = Persistence.createEntityManagerFactory("DomitoryPU");
+        roomJpaController = new RoomJpaController(emf);
+        List<Room> rooms = roomJpaController.findRoomEntities();
+        roomTableModel = new RoomTableModel(rooms);
+        jTable1.setModel(roomTableModel);
+        setEnabledForm(false);
+    }
+    
+     public RoomView(Home2 home2, EntityManagerFactory emf){
+        this(emf);
+        this.parent = home2;
+    }
+    public void refresh(){
+        //System.out.println("HELLO");
+         emf = Persistence.createEntityManagerFactory("DomitoryPU");
+        roomJpaController = new RoomJpaController(emf);
+        List<Room> rooms = roomJpaController.findRoomEntities();
+        roomTableModel = new RoomTableModel(rooms);
+        jTable1.setModel(roomTableModel);
+        setEnabledForm(false);
     }
 
     /**
@@ -30,6 +69,20 @@ public class RoomView extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox();
+        message = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -44,27 +97,320 @@ public class RoomView extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        jButton1.setText("Edit");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Name :");
+
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Save");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Detail");
+
+        jLabel3.setText("Price");
+
+        jLabel4.setText("Status");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "free", "no" }));
+
+        message.setForeground(new java.awt.Color(255, 0, 0));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField1)
+                            .addComponent(jTextField2)
+                            .addComponent(jTextField3)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(63, 63, 63)
+                        .addComponent(jButton2)
+                        .addGap(0, 45, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(message, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(message, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton2))
+        );
+
+        jButton3.setText("New");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setText("Delete");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(15, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton4))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton3)
+                    .addComponent(jButton4))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        int i = jTable1.getSelectedRow();
+        Room room=roomTableModel.rooms.get(i);
+        //jTextField1.setText(roomTableModel.getValueAt(i, 1).toString());
+        //jTextField2.setText(roomTableModel.getValueAt(i, 2).toString());
+        //jTextField3.setText(roomTableModel.getValueAt(i, 3).toString());
+        //jComboBox1.setActionCommand(roomTableModel.getValueAt(i, 4).toString());
+        jTextField1.setText(room.getName());
+        jTextField2.setText(room.getDetail());
+        String status=new Double(room.getPrice()).toString();
+        jTextField3.setText(status);
+        //jComboBox1.setActionCommand(room.getStatus());
+        jComboBox1.setSelectedItem(room.getStatus());
+        jComboBox1.setEditable(false);
+        List<Room> rooms = roomTableModel.getRooms();
+       // Room room = rooms.get(i);
+        //room.setName("TESTTESTETESTEST");
+        selectedRoom = room;
+        setEnabledForm(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    Room selectedRoom;
+
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        try {
+            selectedRoom.setName(jTextField1.getText());
+            selectedRoom.setDetail(jTextField2.getText());
+            String price = jTextField3.getText();
+            double price1 = new Double(price);
+            selectedRoom.setPrice(price1);
+            //selectedRoom.setStatus(jComboBox1.getName());
+            selectedRoom.setStatus((String) jComboBox1.getSelectedItem());
+            if (selectedRoom.getId() != null && selectedRoom.getId() != 0) {
+                roomJpaController.edit(selectedRoom);
+                roomTableModel.fireTableDataChanged();
+            } else {
+                roomJpaController.create(selectedRoom);
+                roomTableModel.rooms.add(selectedRoom);
+                 roomTableModel.fireTableStructureChanged();
+                System.out.println(selectedRoom.getId());
+            }
+        } catch (Exception e) {
+            //message.setText("Please insert all data!!!");
+            e.printStackTrace();
+        }
+        this.parent.getBookingViews1().refresh();
+        this.parent.getRoomView1().refresh();
+        this.parent.getTenantViews1().refresh();
+        setEnabledForm(false);
+
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void setEnabledForm(boolean b) {
+        Component[] components = jPanel1.getComponents();
+        for (Component component : components) {
+            component.setEnabled(b);
+        }
+    }
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        jTextField1.setText("");
+        jTextField2.setText("");
+        jTextField3.setText("");
+        selectedRoom = new Room();
+        jComboBox1.setSelectedItem("free");
+        jComboBox1.setEnabled(false);
+        setEnabledForm(true);
+
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        // roomJpaController.edit(selectedRoom);
+        //roomTableModel.fireTableDataChanged();
+        try {
+            int p = JOptionPane.showConfirmDialog(null, "Do you really want to delete?", "Delete", JOptionPane.YES_NO_OPTION);
+            if (p == 0) {
+                int i = jTable1.getSelectedRow();//int i1=0;
+                Room sRoom = (Room) roomTableModel.rooms.get(i);
+                roomJpaController.destroy(sRoom.getId());
+                roomTableModel.rooms.remove(i);
+                roomTableModel.fireTableDataChanged();
+                
+            }
+            // roomTableModel.fireTableRowsDeleted(i, i+1);
+
+        } catch (Exception f) {
+            f.printStackTrace();
+        }
+        this.parent.getBookingViews1().refresh();
+        this.parent.getRoomView1().refresh();
+        this.parent.getTenantViews1().refresh();
+    }//GEN-LAST:event_jButton4ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JLabel message;
     // End of variables declaration//GEN-END:variables
+}
+
+class RoomTableModel extends AbstractTableModel {
+
+    String[] columnNames = {"Id", "Name", "Detail", "Price", "Status"};
+
+    List<Room> rooms;    
+    
+    public String[] getColumnNames() {
+        return columnNames;
+    }
+
+    public void setColumnNames(String[] columnNames) {
+        this.columnNames = columnNames;
+    }
+
+    public List<Room> getRooms() {
+        return rooms;
+    }
+
+    public void setRooms(List<Room> rooms) {
+        this.rooms = rooms;
+        this.fireTableDataChanged();
+    }
+
+    public RoomTableModel(List<Room> rooms) {
+        this.rooms = rooms;
+        this.fireTableDataChanged();
+    }
+
+    @Override
+    public int getRowCount() {
+        return rooms.size();
+    }
+
+    @Override
+    public int getColumnCount() {
+        return columnNames.length;
+    }
+
+    @Override
+    public String getColumnName(int i) {
+        return columnNames[i];
+    }
+
+    @Override
+    public Object getValueAt(int i, int i1) {
+        Room r = rooms.get(i);
+        switch (i1) {
+            case 0:
+                return r.getId();
+            case 1:
+                return r.getName();
+            case 2:
+                return r.getDetail();
+            case 3:
+                return r.getPrice();
+            case 4:
+                return r.getStatus();
+            default:
+                return null;
+        }
+    }
+    
 }

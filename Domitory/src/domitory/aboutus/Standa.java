@@ -13,5 +13,5 @@ package domitory.aboutus;
 public class Standa {
     String name="Standa Na";
     String stuid="5502632";
-    
+    String major="Information Techonlogy";
 }
