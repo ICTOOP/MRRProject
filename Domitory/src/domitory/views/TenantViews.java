@@ -115,6 +115,8 @@ public class TenantViews extends javax.swing.JPanel {
             }
         });
 
+        jPanel1.setBackground(new java.awt.Color(204, 204, 255));
+
         jLabel1.setText("RoomPrice");
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -322,6 +324,8 @@ public class TenantViews extends javax.swing.JPanel {
         jTextField1.setEnabled(false);
         jName.setText(n.getName());
         jName.setEditable(false);
+        jTextField4.setText("");
+        jTextField5.setText("");
         setEnabledForm(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 Tenant seletedteTenant;
@@ -372,6 +376,8 @@ Tenant seletedteTenant;
         catch(Exception e){
             e.printStackTrace();
         }
+        parent.getBookingViews1().refresh();
+        parent.getRoomView1().refresh();
         setEnabledForm(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 

@@ -3,8 +3,9 @@
   <persistence-unit name="DomitoryPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>domitory.entites.Room</class>
+    <class>domitory.entites.Tenant</class>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/Dorm"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/Dorm2"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
       <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
       <property name="javax.persistence.jdbc.password" value="1234"/>

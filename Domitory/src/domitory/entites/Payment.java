@@ -14,70 +14,51 @@ import javax.persistence.Id;
 
 /**
  *
- * @author Administrator
+ * @author Na Standa
  */
 @Entity
-public class Tenant implements Serializable {
+public class Payment implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String name;
-    private String address;
-    private String tel;
-    private Room room;
-    private String rentDate;
-    private String payStatus;
+    private Tenant tenant;
+    private String PayStatus;
+    private String PayDate;
+    private String tenantName;
 
-    public String getRentDate() {
-        return rentDate;
+    public String getTenantName() {
+        return tenantName;
     }
 
-    public void setRentDate(String rentDate) {
-        this.rentDate = rentDate;
+    public void setTenantName(String tenantName) {
+        this.tenantName = tenantName;
+    }
+
+    public Tenant getTenant() {
+        return tenant;
+    }
+
+    public void setTenant(Tenant tenant) {
+        this.tenant = tenant;
     }
 
     public String getPayStatus() {
-        return payStatus;
+        return PayStatus;
     }
 
-    public void setPayStatus(String payStatus) {
-        this.payStatus = payStatus;
-    }
-    public String getName() {
-        return name;
+    public void setPayStatus(String PayStatus) {
+        this.PayStatus = PayStatus;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getPayDate() {
+        return PayDate;
     }
 
-    public String getAddress() {
-        return address;
+    public void setPayDate(String PayDate) {
+        this.PayDate = PayDate;
     }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getTel() {
-        return tel;
-    }
-
-    public void setTel(String tel) {
-        this.tel = tel;
-    }
-
-    public Room getRoom() {
-        return room;
-    }
-
-    public void setRoom(Room room) {
-        this.room = room;
-    }
-
-    
-
+   
     public Long getId() {
         return id;
     }
@@ -96,10 +77,10 @@ public class Tenant implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Tenant)) {
+        if (!(object instanceof Payment)) {
             return false;
         }
-        Tenant other = (Tenant) object;
+        Payment other = (Payment) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -108,7 +89,7 @@ public class Tenant implements Serializable {
 
     @Override
     public String toString() {
-        return "domitory.entites.Tenant[ id=" + id + " ]";
+        return "domitory.entites.Payment[ id=" + id + " ]";
     }
     
 }

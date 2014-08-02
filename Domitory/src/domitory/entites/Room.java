@@ -90,7 +90,10 @@ public class Room implements Serializable {
 
     @Override
     public String toString() {
-        return "domitory.Room[ id=" + id + " ]";
+        //return "Room{" + "id=" + id + ", name=" + name + ", status=" + status + ", detail=" + detail + ", price=" + price + '}';
+        return name;
     }
+
+    
     
 }

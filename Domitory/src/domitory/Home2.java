@@ -6,8 +6,14 @@
 
 package domitory;
 
+import domitory.views.BookingViews;
 import java.awt.CardLayout;
 import java.awt.Container;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import domitory.views.RoomView;
+import domitory.views.TenantViews;
+import java.awt.Color;
 
 /**
  *
@@ -18,9 +24,25 @@ public class Home2 extends javax.swing.JFrame {
     /**
      * Creates new form Home2
      */
+    EntityManagerFactory emf = Persistence.createEntityManagerFactory("DomitoryPU");
+    
     public Home2() {
         initComponents();
     }
+
+    public BookingViews getBookingViews1() {
+        return bookingViews1;
+    }
+
+    public RoomView getRoomView1() {
+        return roomView1;
+    }
+
+    public TenantViews getTenantViews1() {
+        return tenantViews1;
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -31,24 +53,10 @@ public class Home2 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        tenantViews1 = new domitory.views.TenantViews();
-        tenantViews2 = new domitory.views.TenantViews();
-        otherView1 = new domitory.views.OtherView();
-        tenantViews3 = new domitory.views.TenantViews();
-        otherView2 = new domitory.views.OtherView();
-        homeView2 = new domitory.views.HomeView();
         homeView1 = new domitory.views.HomeView();
-        tenantViews4 = new domitory.views.TenantViews();
-        otherView3 = new domitory.views.OtherView();
-        homeView3 = new domitory.views.HomeView();
-        bookingViews1 = new domitory.views.BookingViews();
-        bookingViews2 = new domitory.views.BookingViews();
-        bookingViews3 = new domitory.views.BookingViews();
-        homeView5 = new domitory.views.HomeView();
-        tenantViews5 = new domitory.views.TenantViews();
-        otherView4 = new domitory.views.OtherView();
-        roomView1 = new domitory.views.RoomView();
-        bookingViews5 = new domitory.views.BookingViews();
+        roomView1 = this.roomView1 = new RoomView(this,emf);
+        bookingViews1 = this.bookingViews1=new domitory.views.BookingViews(this,emf);
+        tenantViews1 = this.tenantViews1=new domitory.views.TenantViews(this,emf);
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -58,54 +66,32 @@ public class Home2 extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
-        jMenu5 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
-
-        javax.swing.GroupLayout homeView2Layout = new javax.swing.GroupLayout(homeView2);
-        homeView2.setLayout(homeView2Layout);
-        homeView2Layout.setHorizontalGroup(
-            homeView2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 448, Short.MAX_VALUE)
-        );
-        homeView2Layout.setVerticalGroup(
-            homeView2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 335, Short.MAX_VALUE)
-        );
-
-        homeView1.setLayout(new java.awt.CardLayout());
-
-        javax.swing.GroupLayout homeView3Layout = new javax.swing.GroupLayout(homeView3);
-        homeView3.setLayout(homeView3Layout);
-        homeView3Layout.setHorizontalGroup(
-            homeView3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 448, Short.MAX_VALUE)
-        );
-        homeView3Layout.setVerticalGroup(
-            homeView3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 335, Short.MAX_VALUE)
-        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.CardLayout());
 
-        javax.swing.GroupLayout homeView5Layout = new javax.swing.GroupLayout(homeView5);
-        homeView5.setLayout(homeView5Layout);
-        homeView5Layout.setHorizontalGroup(
-            homeView5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 448, Short.MAX_VALUE)
+        javax.swing.GroupLayout homeView1Layout = new javax.swing.GroupLayout(homeView1);
+        homeView1.setLayout(homeView1Layout);
+        homeView1Layout.setHorizontalGroup(
+            homeView1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 769, Short.MAX_VALUE)
         );
-        homeView5Layout.setVerticalGroup(
-            homeView5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 335, Short.MAX_VALUE)
+        homeView1Layout.setVerticalGroup(
+            homeView1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 481, Short.MAX_VALUE)
         );
 
-        getContentPane().add(homeView5, "cardhome");
-        getContentPane().add(tenantViews5, "cardt");
-        getContentPane().add(otherView4, "cardo");
-        getContentPane().add(roomView1, "cardr");
-        getContentPane().add(bookingViews5, "cardb");
+        getContentPane().add(homeView1, "cardHomeView");
+        getContentPane().add(roomView1, "cardRoomView");
+        getContentPane().add(bookingViews1, "cardBookingViews");
+        getContentPane().add(tenantViews1, "cardTenantViews");
 
-        jMenu1.setText("File");
+        jMenuBar1.setBackground(new java.awt.Color(204, 204, 204));
+        jMenuBar1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jMenu1.setBackground(new java.awt.Color(255, 255, 255));
+        jMenu1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jMenu1.setText("Home");
 
         jMenuItem2.setText("Home");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
@@ -117,9 +103,10 @@ public class Home2 extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Book");
+        jMenu2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jMenu2.setText("Book/Rent and Remove");
 
-        jMenuItem4.setText("Book");
+        jMenuItem4.setText("Book/Rent and Remove");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem4ActionPerformed(evt);
@@ -129,9 +116,10 @@ public class Home2 extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
-        jMenu3.setText("Tenant");
+        jMenu3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jMenu3.setText("Pay");
 
-        jMenuItem1.setText("TenantList");
+        jMenuItem1.setText("Pay");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
@@ -141,6 +129,7 @@ public class Home2 extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
+        jMenu4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jMenu4.setText("Room");
 
         jMenuItem5.setText("RoomList");
@@ -153,18 +142,6 @@ public class Home2 extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu4);
 
-        jMenu5.setText("Other");
-
-        jMenuItem3.setText("Other");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
-            }
-        });
-        jMenu5.add(jMenuItem3);
-
-        jMenuBar1.add(jMenu5);
-
         setJMenuBar(jMenuBar1);
 
         pack();
@@ -174,35 +151,44 @@ public class Home2 extends javax.swing.JFrame {
         // TODO add your handling code here:
         Container tn=this.getContentPane();
         CardLayout layout=(CardLayout) tn.getLayout();
-        layout.show(tn, "cardt");
+        layout.show(tn, "cardTenantViews");
+        jMenu1.setForeground(Color.black);
+        jMenu2.setForeground(Color.black);
+        jMenu3.setForeground(Color.red);
+        jMenu4.setForeground(Color.black);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
         Container h=this.getContentPane();
         CardLayout layout=(CardLayout) h.getLayout();
-        layout.show(h, "cardhome");
+        layout.show(h, "cardHomeView");
+        jMenu1.setForeground(Color.red);
+        jMenu2.setForeground(Color.black);
+        jMenu3.setForeground(Color.black);
+        jMenu4.setForeground(Color.black);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
-
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        // TODO add your handling code here:
-        Container ot=this.getContentPane();
-        CardLayout layout=(CardLayout) ot.getLayout();
-        layout.show(ot, "cardo");
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
         Container bo=this.getContentPane();
         CardLayout layout=(CardLayout) bo.getLayout();
-        layout.show(bo, "cardb");
+        layout.show(bo, "cardBookingViews");
+        jMenu1.setForeground(Color.black);
+        jMenu2.setForeground(Color.red);
+        jMenu3.setForeground(Color.black);
+        jMenu4.setForeground(Color.black);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
         // TODO add your handling code here:
         Container ro=this.getContentPane();
         CardLayout layout=(CardLayout) ro.getLayout();
-        layout.show(ro, "cardr");
+        layout.show(ro, "cardRoomView");
+        jMenu1.setForeground(Color.black);
+        jMenu2.setForeground(Color.black);
+        jMenu3.setForeground(Color.black);
+        jMenu4.setForeground(Color.red);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     /**
@@ -242,33 +228,20 @@ public class Home2 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private domitory.views.BookingViews bookingViews1;
-    private domitory.views.BookingViews bookingViews2;
-    private domitory.views.BookingViews bookingViews3;
-    private domitory.views.BookingViews bookingViews5;
     private domitory.views.HomeView homeView1;
-    private domitory.views.HomeView homeView2;
-    private domitory.views.HomeView homeView3;
-    private domitory.views.HomeView homeView5;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
-    private domitory.views.OtherView otherView1;
-    private domitory.views.OtherView otherView2;
-    private domitory.views.OtherView otherView3;
-    private domitory.views.OtherView otherView4;
     private domitory.views.RoomView roomView1;
     private domitory.views.TenantViews tenantViews1;
-    private domitory.views.TenantViews tenantViews2;
-    private domitory.views.TenantViews tenantViews3;
-    private domitory.views.TenantViews tenantViews4;
-    private domitory.views.TenantViews tenantViews5;
     // End of variables declaration//GEN-END:variables
+
+    
+
 }
