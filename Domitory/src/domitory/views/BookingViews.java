@@ -35,7 +35,6 @@ public class BookingViews extends javax.swing.JPanel {
     RoomJpaController roomJpaController;
     EntityManagerFactory emf;
     TenantTableModel tenantTableModel;
-    String r,r1;int i0;
     Home2 parent;
     
     public BookingViews() {
@@ -62,7 +61,6 @@ public class BookingViews extends javax.swing.JPanel {
         List<Tenant> tenants = tenantJpaController.findTenantEntities();
         tenantTableModel = new TenantTableModel(tenants);
         jTable1.setModel(tenantTableModel);
-        //jComboBox1.addItem("R1");
         setEnabledForm(false);
     }
 
@@ -284,14 +282,6 @@ public class BookingViews extends javax.swing.JPanel {
             selectedTenant.setRentDate(jTextField1.getText());
             selectedTenant.setPayStatus(jTextField6.getText());
             selectedTenant.getRoom().setStatus("no");
-                 r1=jComboBox1.getSelectedItem().toString();
-                /* if(r!=r1)
-                 {
-                   int i = jTable1.getSelectedRow();
-                   Tenant n = (Tenant) tenantTableModel.tenants.get(i);
-                    n.getRoom().setStatus("free");
-                roomJpaController.edit(n.getRoom());
-                 }*/
             if (selectedTenant.getId() != null && selectedTenant.getId() != 0) {
                 tenantJpaController.edit(selectedTenant);
                 roomJpaController.edit(selectedTenant.getRoom());
@@ -348,14 +338,12 @@ public class BookingViews extends javax.swing.JPanel {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         int i = jTable1.getSelectedRow();
-        i0=i;
         Tenant tenant=tenantTableModel.tenants.get(i);
         jTextField2.setText(tenant.getName());
         jTextField3.setText(tenant.getAddress());
         jTextField4.setText(tenant.getTel());
         jTextField6.setText(tenant.getPayStatus());
         jComboBox1.addItem(tenant.getRoom());
-         r=tenant.getRoom().toString();
         Room r = tenant.getRoom();
         r.setStatus("free");
         try {
@@ -367,12 +355,7 @@ public class BookingViews extends javax.swing.JPanel {
         jComboBox1.setSelectedItem(tenant.getRoom());
     
         jTextField1.setText(tenant.getRentDate());
-       // jTextField2.setText(tenantTableModel.getValueAt(i, 1).toString());
-       // jTextField3.setText(tenantTableModel.getValueAt(i, 2).toString());
-       // jTextField4.setText(tenantTableModel.getValueAt(i, 3).toString());
-       // jComboBox1.setActionCommand(tenantTableModel.getValueAt(i, 4).toString());
         List<Tenant> tenants = tenantTableModel.getTenants();
-       // Tenant tenant = tenants.get(i);
         selectedTenant = tenant;
         setEnabledForm(true);
     }//GEN-LAST:event_jButton4ActionPerformed
